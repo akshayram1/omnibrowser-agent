@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OmniBrowser Agent</title>
+    <meta
+      name="description"
+      content="OmniBrowser Agent - local-first browser AI operator library."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap header-row">
+        <a class="brand" href="#home">OmniBrowser Agent</a>
+        <nav class="nav">
+          <a href="#home">Home</a>
+          <a href="#docs">Docs</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="section hero">
+        <div class="wrap">
+          <h1>Local-first browser AI automation library</h1>
+          <p>
+            OmniBrowser Agent helps you run page observation, planning, and execution flows directly in the browser.
+          </p>
+          <div class="actions">
+            <a
+              class="btn primary"
+              href="https://www.npmjs.com/package/@akshayram1/omnibrowser-agent"
+              target="_blank"
+              rel="noreferrer"
+              >NPM Package</a
+            >
+            <a
+              class="btn"
+              href="https://github.com/akshayram1/omnibrowser-agent"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub Repo</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="docs" class="section">
+        <div class="wrap">
+          <h2>Docs</h2>
+          <p>Quick start:</p>
+          <pre><code>npm install @akshayram1/omnibrowser-agent</code></pre>
+          <pre><code>import { createBrowserAgent } from "@akshayram1/omnibrowser-agent";
+
+const agent = createBrowserAgent(
+  {
+    goal: "Open CRM and find customer John Smith",
+    mode: "human-approved"
+  },
+  {
+    onStep: (result) => console.log(result.message)
+  }
+);
+
+await agent.start();</code></pre>
+          <p>
+            Full project docs are available in this repository under
+            <a href="./docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">Architecture</a>,
+            <a href="./docs/EMBEDDING.md" target="_blank" rel="noreferrer">Embedding</a>, and
+            <a href="./docs/ROADMAP.md" target="_blank" rel="noreferrer">Roadmap</a>.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="wrap">
+          <h2>Contact</h2>
+          <p>Maintainer: Akshay Chame</p>
+          <ul>
+            <li>
+              Email:
+              <a href="mailto:akshaychame2@gmail.com">akshaychame2@gmail.com</a>
+            </li>
+            <li>
+              GitHub:
+              <a href="https://github.com/akshayram1" target="_blank" rel="noreferrer">@akshayram1</a>
+            </li>
+            <li>
+              Package:
+              <a
+                href="https://www.npmjs.com/package/@akshayram1/omnibrowser-agent"
+                target="_blank"
+                rel="noreferrer"
+                >@akshayram1/omnibrowser-agent</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
