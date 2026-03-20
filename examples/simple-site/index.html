@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Agent Library Demo</title>
+    <style>
+      :root {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #f6f7fb;
+        color: #1b1e28;
+      }
+      .container {
+        max-width: 980px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+      .panel {
+        background: #fff;
+        border: 1px solid #e3e7ef;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+      .muted {
+        color: #5f6575;
+        margin: 0;
+      }
+      .controls {
+        display: grid;
+        gap: 10px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      label {
+        font-size: 12px;
+        color: #4b5160;
+      }
+      input,
+      select,
+      button,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #cfd6e4;
+        font-size: 14px;
+      }
+      button {
+        cursor: pointer;
+        background: #20293a;
+        color: #fff;
+        border: none;
+      }
+      button.secondary {
+        background: #55607a;
+      }
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+      pre {
+        background: #0d1220;
+        color: #d9e2ff;
+        padding: 12px;
+        border-radius: 8px;
+        min-height: 140px;
+        overflow: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #e6eaf2;
+        padding: 8px;
+        text-align: left;
+        font-size: 13px;
+      }
+      th {
+        color: #4b5160;
+      }
+      .status {
+        font-size: 13px;
+        color: #21304d;
+      }
+      .profile-result {
+        display: none;
+        margin-top: 12px;
+        border: 1px solid #d7deea;
+        border-radius: 10px;
+        padding: 12px;
+        background: #f9fbff;
+      }
+      .profile-result.visible {
+        display: block;
+      }
+      .profile-result h3 {
+        margin: 0 0 8px;
+        font-size: 15px;
+      }
+      .profile-meta {
+        margin: 4px 0;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel">
+        <h1>Browser Agent Embedded Demo</h1>
+        <p class="muted">Simple CRM-style page using the browser-agent library directly in app UI.</p>
+      </div>
+
+      <div class="panel controls">
+        <label for="goal">Goal</label>
+        <textarea id="goal">search Jane Doe and open profile</textarea>
+
+        <div class="row">
+          <div>
+            <label for="mode">Mode</label>
+            <select id="mode">
+              <option value="human-approved">human-approved</option>
+              <option value="autonomous">autonomous</option>
+            </select>
+          </div>
+          <div>
+            <label for="model">WebLLM Model</label>
+            <select id="model">
+              <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama-3.2-1B-Instruct-q4f16_1-MLC</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="start">Start Agent</button>
+          <button id="approve" class="secondary">Approve Pending</button>
+          <button id="stop" class="secondary">Stop</button>
+        </div>
+
+        <div class="status" id="status">Status: idle (WebLLM not loaded)</div>
+      </div>
+
+      <div class="panel" id="crm-root">
+        <h2>Mock CRM Contacts</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jane Doe</td>
+              <td>jane@acme.com</td>
+              <td>Acme Corp</td>
+              <td>
+                <button
+                  class="open-profile"
+                  data-agent-target="profile-jane"
+                  data-name="Jane Doe"
+                  data-email="jane@acme.com"
+                  data-company="Acme Corp"
+                >
+                  Open Profile
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>John Smith</td>
+              <td>john@globex.com</td>
+              <td>Globex</td>
+              <td>
+                <button
+                  class="open-profile"
+                  data-agent-target="profile-john"
+                  data-name="John Smith"
+                  data-email="john@globex.com"
+                  data-company="Globex"
+                >
+                  Open Profile
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="profile-result" class="profile-result" aria-live="polite">
+          <h3 id="profile-name">No profile opened yet</h3>
+          <p id="profile-email" class="profile-meta"></p>
+          <p id="profile-company" class="profile-meta"></p>
+          <p id="profile-source" class="profile-meta"></p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Agent Event Log</h2>
+        <pre id="log"></pre>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

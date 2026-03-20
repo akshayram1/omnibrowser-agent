@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": false,
+    "outDir": "dist/types"
+  },
+  "include": [
+    "src/lib/**/*.ts",
+    "src/content/executor.ts",
+    "src/content/pageObserver.ts",
+    "src/content/planner.ts",
+    "src/shared/**/*.ts"
+  ]
+}
