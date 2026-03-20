@@ -1,4 +1,4 @@
-# Browser Agent Architecture (v0.1)
+# OmniBrowser Agent Architecture (v0.1)
 
 ## Goals
 

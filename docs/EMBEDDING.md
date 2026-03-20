@@ -1,17 +1,17 @@
-# Embedding Browser Agent in Your Website
+# Embedding OmniBrowser Agent in Your Website
 
-You can keep the extension flow and also embed Browser Agent as a library in your own web app.
+You can keep the extension flow and also embed OmniBrowser Agent as a library in your own web app.
 
 ## Install
 
 ```bash
-npm install browser-agent
+npm install @akshaychame/omnibrowser-agent
 ```
 
 ## Basic usage
 
 ```ts
-import { createBrowserAgent } from "browser-agent";
+import { createBrowserAgent } from "@akshaychame/omnibrowser-agent";
 
 const agent = createBrowserAgent(
   {

@@ -1,5 +1,5 @@
 {
-  "name": "browser-agent",
+  "name": "@akshaychame/omnibrowser-agent",
   "version": "0.2.0",
   "private": false,
   "type": "module",
@@ -12,7 +12,7 @@
       "import": "./dist/lib.js"
     }
   },
-  "description": "Local-first browser AI operator (WebLLM + page automation)",
+  "description": "Local-first OmniBrowser Agent (WebLLM + page automation)",
   "author": "Akshay Chame",
   "license": "MIT",
   "scripts": {
