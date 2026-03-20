@@ -1,7 +1,7 @@
 # omnibrowser-agent
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.2.0-green.svg)](package.json)
+[![Version](https://img.shields.io/badge/version-0.2.1-green.svg)](package.json)
 
 Local-first open-source browser AI operator using in-browser planning and page actions.
 
@@ -63,7 +63,7 @@ npm run build
 ## Use as a web library
 
 ```ts
-import { createBrowserAgent } from "@akshaychame/omnibrowser-agent";
+import { createBrowserAgent } from "@akshayram1/omnibrowser-agent";
 
 const agent = createBrowserAgent({
   goal: "Open CRM and find customer John Smith",
