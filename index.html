@@ -25,10 +25,17 @@
     <main>
       <section id="home" class="section hero">
         <div class="wrap">
+          <p class="eyebrow">Open-source browser automation SDK</p>
           <h1>Local-first browser AI automation library</h1>
           <p>
             OmniBrowser Agent helps you run page observation, planning, and execution flows directly in the browser.
           </p>
+          <div class="chips">
+            <span>Privacy-first</span>
+            <span>WebLLM-ready</span>
+            <span>Human-approved mode</span>
+            <span>Embeddable API</span>
+          </div>
           <div class="actions">
             <a
               class="btn primary"
@@ -45,14 +52,52 @@
               >GitHub Repo</a
             >
           </div>
+          <div class="stats" aria-label="project stats">
+            <div class="stat"><strong>2</strong><span>Execution Modes</span></div>
+            <div class="stat"><strong>3</strong><span>Core Modules</span></div>
+            <div class="stat"><strong>MIT</strong><span>License</span></div>
+          </div>
+          <div class="home-grid">
+            <article class="card">
+              <h3>Use Cases</h3>
+              <ul>
+                <li>CRM profile lookup automation</li>
+                <li>Guided web task execution</li>
+                <li>Assisted data extraction flows</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Core Modules</h3>
+              <ul>
+                <li><strong>Observer:</strong> page signals and candidates</li>
+                <li><strong>Planner:</strong> next best action selection</li>
+                <li><strong>Executor:</strong> safe browser action runtime</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Project Links</h3>
+              <ul>
+                <li><a href="https://www.npmjs.com/package/@akshayram1/omnibrowser-agent" target="_blank" rel="noreferrer">NPM package</a></li>
+                <li><a href="https://github.com/akshayram1/omnibrowser-agent" target="_blank" rel="noreferrer">GitHub repository</a></li>
+                <li><a href="./README.md" target="_blank" rel="noreferrer">README</a></li>
+              </ul>
+            </article>
+          </div>
         </div>
       </section>
 
       <section id="docs" class="section">
         <div class="wrap">
+          <div class="surface">
           <h2>Docs</h2>
-          <p>Quick start:</p>
+          <p>
+            Everything you need to install, initialize, and run your first browser agent with clear defaults.
+          </p>
+
+          <h3>Installation</h3>
           <pre><code>npm install @akshayram1/omnibrowser-agent</code></pre>
+
+          <h3>Quick Start</h3>
           <pre><code>import { createBrowserAgent } from "@akshayram1/omnibrowser-agent";
 
 const agent = createBrowserAgent(
@@ -66,17 +111,48 @@ const agent = createBrowserAgent(
 );
 
 await agent.start();</code></pre>
+
+          <h3>Execution Modes</h3>
+          <div class="docs-grid">
+            <article class="doc-card">
+              <h4>human-approved</h4>
+              <p>Requires explicit approval for sensitive actions. Best for production-like workflows.</p>
+            </article>
+            <article class="doc-card">
+              <h4>autonomous</h4>
+              <p>Runs actions continuously with fewer pauses. Best for rapid iteration and demos.</p>
+            </article>
+          </div>
+
+          <h3>Recommended Integration Flow</h3>
+          <ol>
+            <li>Create an agent with your goal and preferred mode.</li>
+            <li>Attach callbacks (`onStep`, `onApprovalRequired`, `onDone`) to drive UI state.</li>
+            <li>Call <code>start()</code> to begin planning and execution.</li>
+            <li>If approval is required, surface the action and call <code>resume()</code>.</li>
+            <li>Use <code>stop()</code> for cancellation and reset.</li>
+          </ol>
+
+          <h3>Safety Notes</h3>
+          <ul>
+            <li>Prefer scoped selectors for deterministic action targeting.</li>
+            <li>Use human-approved mode for workflows that mutate critical data.</li>
+            <li>Log `onStep` output for auditability and debugging.</li>
+          </ul>
+
           <p>
             Full project docs are available in this repository under
             <a href="./docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">Architecture</a>,
             <a href="./docs/EMBEDDING.md" target="_blank" rel="noreferrer">Embedding</a>, and
             <a href="./docs/ROADMAP.md" target="_blank" rel="noreferrer">Roadmap</a>.
           </p>
+          </div>
         </div>
       </section>
 
       <section id="contact" class="section">
         <div class="wrap">
+          <div class="surface">
           <h2>Contact</h2>
           <p>Maintainer: Akshay Chame</p>
           <ul>
@@ -98,8 +174,18 @@ await agent.start();</code></pre>
               >
             </li>
           </ul>
+            <p class="contact-note">
+              For feature requests or bugs, please open an issue on GitHub with reproduction steps.
+            </p>
+          </div>
         </div>
       </section>
     </main>
+
+      <footer class="footer">
+        <div class="wrap">
+          <p>© 2026 OmniBrowser Agent · MIT License</p>
+        </div>
+      </footer>
   </body>
 </html>
