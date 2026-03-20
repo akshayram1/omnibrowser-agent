@@ -1,6 +1,6 @@
 {
-  "name": "@akshaychame/omnibrowser-agent",
-  "version": "0.2.0",
+  "name": "@akshayram1/omnibrowser-agent",
+  "version": "0.2.1",
   "private": false,
   "type": "module",
   "main": "./dist/lib.js",
